@@ -21,9 +21,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ~/gg-cicd-forum-api
+            cd ~/forum-api
             git pull origin main
-            cd gg-forum-api
             npm install
             npm run migrate up
-            pm2 describe gg-forum-api > /dev/null 2>&1 && pm2 restart gg-forum-api || pm2 start npm --name gg-forum-api -- run start
+            pm2 describe forum-api > /dev/null 2>&1 && pm2 restart forum-api || pm2 start npm --name forum-api -- run start
