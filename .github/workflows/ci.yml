@@ -18,7 +18,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:16
         env:
           POSTGRES_USER: ${{ secrets.PGUSER_TEST }}
           POSTGRES_PASSWORD: ${{ secrets.PGPASSWORD_TEST }}
@@ -40,7 +40,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install migrate and test
         run: |
-          cd gg-forum-api
           npm install
           npm run migrate up
           npm run test
